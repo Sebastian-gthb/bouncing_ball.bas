@@ -61,7 +61,7 @@ wa = 1
 PLAY "T180L64O0"
 DO
 Esc$ = INKEY$
-tim = TIMER
+'tim = TIMER     ' this is for the fixed time delay described below
 PUT (x, y), Felda, PSET
 x = x + wx
 a = a + wa
@@ -74,11 +74,12 @@ IF Esc$ = "s" AND snd = 0 THEN snd = 1: GOTO 40
 IF Esc$ = "s" AND snd = 1 THEN snd = 0: GOTO 40
 40
 IF Esc$ = "g" THEN andersrum: GOTO 20
-DO
-zeit = TIMER - tim
-IF zeit > .01 THEN fr = 1
-LOOP UNTIL fr = 1
-fr = 0
+' this is a test for a fixed time delay for all CPU speeds but its to slow
+'DO
+'zeit = TIMER - tim
+'IF zeit > .01 THEN fr = 1
+'LOOP UNTIL fr = 1
+'fr = 0
 LOOP UNTIL Esc$ = CHR$(27)
 CLS
 SCREEN 9
